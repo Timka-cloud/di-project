@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'kz.timka'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+task copyResources(type: Copy) {
+    from "${projectDir}/src/main/resources/META-INF"
+    into "${buildDir}/classes/java/main/META-INF"
+}
+
+processResources.dependsOn copyResources
+
+dependencies {
+    implementation group: 'org.jboss.weld.se', name: 'weld-se-core', version: '5.0.1.Final'
+
+}
+
